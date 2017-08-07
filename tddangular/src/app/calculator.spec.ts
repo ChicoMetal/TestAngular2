@@ -1,14 +1,19 @@
 import { Calculator } from './calculator';
 
 describe('Test para calculator', () => {
+    
+    let calculator;
+    
+    //Preparar
+    beforeEach( () => {
+    
+        calculator = new Calculator();
+    });
 
     describe('Test para funcion Multiply', () => {
         
         it('Se espera que retorne nueve', () => {
             
-            //preparar
-            let calculator = new Calculator();
-
             //Actuar
             let result:number = calculator.Multiply(3,3);
 
@@ -22,9 +27,6 @@ describe('Test para calculator', () => {
         
         it('Dividir un numero, se espera un numero', () => {
            
-            //preparar
-            let calculator = new Calculator();
-
             //Actuar & Asserts
             expect( calculator.Divide(3,3) ).toEqual(1);
             expect( calculator.Divide(5,2) ).toEqual(2.5);
@@ -33,9 +35,6 @@ describe('Test para calculator', () => {
 
         it('Dividir por zero, se espera retorne null', () => {
            
-            //preparar
-            let calculator = new Calculator();
-
             //Actuar & Asserts
             expect( calculator.Divide(3,0) ).toBeNull();
             expect( calculator.Divide(4454545,0) ).toBeNull();
