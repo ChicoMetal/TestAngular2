@@ -15,4 +15,23 @@ export class UsuariosService {
     return this.http.get( `${this.urlService}/${idUsuario}` )
       .map( response => response.json() );
   }
+
+  public CreateUsuario( usuario:{} ):Observable<any>{
+
+    return this.http.post( `${this.urlService}`, JSON.stringify( usuario ) )
+      .map( response => response.json())
+  }
+  
+  public UpdateUser( user:{id:number} ):Observable<any>{
+
+    let id = user.id;
+    return this.http.put(`${this.urlService}/${id}`, JSON.stringify( user ) )
+      .map( response => response.json());
+  }
+
+  public DeleteUser( userId:number ):Observable<{}>{
+
+    return this.http.delete(`${this.urlService}/${userId}`)
+      .map( response => response.json() );
+  }
 }
