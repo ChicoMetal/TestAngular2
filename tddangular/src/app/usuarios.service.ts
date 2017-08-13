@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http,RequestOptionsArgs, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -12,7 +12,7 @@ export class UsuariosService {
   
   public getUsuario( idUsuario:number ):Observable<any>{
     
-    return this.http.get( `${this.urlService}/${idUsuario}` )
+    return this.http.get( `${this.urlService}/${idUsuario}`, this.MakeOption() )
       .map( response => response.json() );
   }
 
@@ -34,4 +34,15 @@ export class UsuariosService {
     return this.http.delete(`${this.urlService}/${userId}`)
       .map( response => response.json() );
   }
+
+  private MakeOption():RequestOptionsArgs{//creando headers para las peticiones
+    
+    let headers = new Headers();
+
+    headers.append('API-TOKEN','xxx6756HBFhgtfsss');
+    return { 
+      headers: headers 
+    };
+  }
+
 }

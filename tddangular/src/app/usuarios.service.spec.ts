@@ -4,7 +4,8 @@ import {
   ConnectionBackend, 
   BaseRequestOptions, 
   Response, 
-  ResponseOptions } from '@angular/http';
+  ResponseOptions,
+  RequestMethod } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
 import { UsuariosService } from './usuarios.service';
@@ -37,7 +38,7 @@ describe('UsuariosService', () => {
     it('Deberia Obtener un usuario', 
       inject([UsuariosService, MockBackend], fakeAsync((usuarioService, mockBackend:MockBackend) => {//inyectar los modulos requeridos
         
-        let dataResponse;//recibira la respuesta del "servidor"
+        let dataResponse, requestMethod, headers;//recibira la respuesta del "servidor"
         let responseBody = {
                             "id": 1,
                             "name": "Leanne Graham",
@@ -66,6 +67,9 @@ describe('UsuariosService', () => {
 
         mockBackend.connections.subscribe( connection => {//preparar el mock de la peticion
           
+          requestMethod = connection.request.method;//obtener el metodo por el que se realizo la peticion
+          headers = connection.request.headers.get('API-TOKEN');//probar headers
+
           expect( connection.request.url )
             .toBe('http://jsonplaceholder.typicode.com/users/1');//testear si la ruta es la correcta
 
@@ -79,6 +83,8 @@ describe('UsuariosService', () => {
         tick();//peticion asincrona la vuelve sincrona 
         
         //verificar resultados
+        expect( headers === null ).toBeFalsy();
+        expect( requestMethod ).toBe( RequestMethod.Get);
         expect( dataResponse.id ).toBeDefined();
         expect( dataResponse.name ).toBeDefined();
         expect( dataResponse.address ).toBeDefined();
