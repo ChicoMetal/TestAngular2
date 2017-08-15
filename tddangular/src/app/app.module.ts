@@ -5,11 +5,17 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { PersonaComponent } from './persona/persona.component';
 import { UsuariosService } from './usuarios.service';
+import { PersonaRowComponent } from './persona-row/persona-row.component';
+import { UsuarioRowComponent } from './usuario-row/usuario-row.component';
+import { UsuarioComponent } from './usuario/usuario.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonaComponent
+    PersonaComponent,
+    PersonaRowComponent,
+    UsuarioRowComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule
