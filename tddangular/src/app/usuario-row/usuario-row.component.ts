@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import {  UsuarioComponent } from '../usuario/usuario.component';
 
@@ -11,6 +11,7 @@ export class UsuarioRowComponent implements OnInit {
   
   public emailParaMostrar:string;
   @Input() Usuario:UsuarioComponent;
+  @Output() onSelected = new EventEmitter<UsuarioComponent>();
 
   constructor() { }
 
@@ -21,4 +22,8 @@ export class UsuarioRowComponent implements OnInit {
     this.emailParaMostrar = this.Usuario.email;
   }
 
+  public Seleccionar(){
+
+    this.onSelected.emit( this.Usuario );
+  }
 }

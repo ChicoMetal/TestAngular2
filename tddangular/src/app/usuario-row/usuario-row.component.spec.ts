@@ -47,25 +47,48 @@ describe('UsuarioRowComponent', () => {
     fixture.detectChanges();//refresco cambios
     expect( el.textContent ).toEqual('carlos');
   });
+  
+  describe('Pruebas funcionales',() => {
+    
+    it('Debe mostrar email en pantalla al hacer click en el boton ', () => {
+      //Assert
+      let deButton = fixture.debugElement.query( By.css('.btn-mostrar-email') );
+      let deEmailContent = fixture.debugElement.query( By.css('#email') );
+          
+      //Prepare
+      let elEmail = deEmailContent.nativeElement;
+      let emailOld = elEmail.textContent;
+  
+      deButton.triggerEventHandler('click', null );
+  
+      fixture.detectChanges();//refresco cambios
+  
+      //Aserts
+      expect( emailOld ).toEqual('');
+      expect( elEmail.textContent ).toEqual('carlos@g.com');
+    });
 
-  it('Funcional: Debe mostrar email en pantalla al hacer click en el boton ', () => {
-    //Assert
-    let deButton = fixture.debugElement.query( By.css('.btn-mostrar-email') );
-    let deEmailContent = fixture.debugElement.query( By.css('#email') );
-        
-    //Prepare
-    let elButton = deButton.nativeElement;
-    let elEmail = deEmailContent.nativeElement;
-    let emailOld = elEmail.textContent;
+    it('Deberia capturar la salida de ua variable Output', () => {
+      //Preparar
+      let usuarioSelect: UsuarioComponent;      
+      component.onSelected.subscribe( (usuario:UsuarioComponent) => {
+        usuarioSelect = usuario;
+      });
+      
+      //Actuar
+      let deButton = fixture.debugElement.query( By.css('.btn-seleccionar') );
+      deButton.triggerEventHandler('click', null );
+      fixture.detectChanges();
 
-    deButton.triggerEventHandler('click', null );
-
-    fixture.detectChanges();//refresco cambios
-
-    //Aserts
-    expect( emailOld ).toEqual('');
-    expect( elEmail.textContent ).toEqual('carlos@g.com');
+      //Expect
+      expect( usuarioSelect.name ).toEqual('carlos');
+      
+    });
+    
   });
+  
+
+
 
 
 });

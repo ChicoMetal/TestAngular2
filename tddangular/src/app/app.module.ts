@@ -8,6 +8,7 @@ import { UsuariosService } from './usuarios.service';
 import { PersonaRowComponent } from './persona-row/persona-row.component';
 import { UsuarioRowComponent } from './usuario-row/usuario-row.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { UsuarioComponent } from './usuario/usuario.component';
     PersonaComponent,
     PersonaRowComponent,
     UsuarioRowComponent,
-    UsuarioComponent
+    UsuarioComponent,
+    ListaUsuariosComponent
   ],
   imports: [
     BrowserModule
