@@ -1,1 +1,6 @@
-<app-usuario-row [Usuario]="Usuario" (onSelected)="Seleccionar($event)"></app-usuario-row>
+{{UsuarioSeleccionado | json}}
+<app-usuario-row 
+                *ngFor = "let User of Usuarios"
+                [Usuario]="User" 
+                (onSelected)="Seleccionar($event)">
+</app-usuario-row>

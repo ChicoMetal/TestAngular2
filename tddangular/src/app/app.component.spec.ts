@@ -2,13 +2,19 @@ import { TestBed, async } from '@angular/core/testing';
 
 import { AppComponent } from './app.component';
 import { PersonaRowComponent  } from './persona-row/persona-row.component';
+import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
+import { UsuarioComponent } from './usuario/usuario.component';
+import { UsuarioRowComponent } from './usuario-row/usuario-row.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        PersonaRowComponent
+        PersonaRowComponent,
+        ListaUsuariosComponent,
+        UsuarioRowComponent,
+        UsuarioComponent
       ],
     }).compileComponents();
   }));

@@ -8,19 +8,17 @@ import { UsuarioComponent } from '.././usuario/usuario.component';
 })
 export class ListaUsuariosComponent implements OnInit {
   
-  public Usuario:UsuarioComponent;
   public UsuarioSeleccionado:UsuarioComponent;
+  public Usuarios:UsuarioComponent[];
 
   constructor() { 
-
-    this.Usuario = new UsuarioComponent(
-      'Andres',
-      'andres@g.com',
-      35264598
-    );
   }
 
   ngOnInit() {
+      this.Usuarios = [ new UsuarioComponent( 'Andres', 'andres@g.com', 35264598 ),
+                        new UsuarioComponent( 'Usuario1', 'usuario1@g.com', 85454515 ),
+                        new UsuarioComponent( 'Usuario2', 'usuario2@g.com', 145451451 ),
+                        new UsuarioComponent( 'Usuario3', 'usuario3@g.com', 4541251 ) ];
   }
 
   Seleccionar( Usuario:UsuarioComponent ){
