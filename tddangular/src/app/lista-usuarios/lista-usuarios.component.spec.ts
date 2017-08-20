@@ -1,9 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser'
 import { DebugElement } from '@angular/core'
+import { Http } from '@angular/http';
+
+import { UsuariosServiceMock } from './../mocks/usuarios.service.mock'
+import { mockHttpProvider } from './../mocks/http.service.mock'
 
 import { ListaUsuariosComponent } from './lista-usuarios.component';
 import { UsuarioRowComponent } from '.././usuario-row/usuario-row.component';
+import { UsuariosService } from './../usuarios.service';
 
 describe('ListaUsuariosComponent', () => {
   let component: ListaUsuariosComponent;
@@ -11,7 +16,11 @@ describe('ListaUsuariosComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListaUsuariosComponent, UsuarioRowComponent ]
+      declarations: [ ListaUsuariosComponent, UsuarioRowComponent ],
+      providers: [
+        { provide: UsuariosService, useClass: UsuariosServiceMock }
+      ]
+
     })
     .compileComponents();
   }));

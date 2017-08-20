@@ -1,21 +1,33 @@
 import { TestBed, async } from '@angular/core/testing';
+import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { PersonaComponent } from './persona/persona.component';
 import { PersonaRowComponent  } from './persona-row/persona-row.component';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { UsuarioRowComponent } from './usuario-row/usuario-row.component';
+import { UsuariosService } from './usuarios.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        PersonaComponent,
         PersonaRowComponent,
-        ListaUsuariosComponent,
         UsuarioRowComponent,
-        UsuarioComponent
+        UsuarioComponent,
+        ListaUsuariosComponent
       ],
+      imports: [
+        BrowserModule,
+        HttpModule
+      ],
+      providers: [
+        UsuariosService
+      ]
     }).compileComponents();
   }));
 

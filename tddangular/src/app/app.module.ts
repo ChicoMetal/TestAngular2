@@ -20,7 +20,8 @@ import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.componen
     ListaUsuariosComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
   providers: [
     UsuariosService

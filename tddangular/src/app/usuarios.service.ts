@@ -16,6 +16,11 @@ export class UsuariosService {
       .map( response => response.json() );
   }
 
+  getUsuarios(){
+    return this.http.get(`${this.urlService}`, this.MakeOption())
+    .map(response => response.json());
+  }
+
   public CreateUsuario( usuario:{} ):Observable<any>{
 
     return this.http.post( `${this.urlService}`, JSON.stringify( usuario ) )
