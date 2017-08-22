@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser'
-import { DebugElement } from '@angular/core'
-import { MockBackend } from '@angular/http/testing';
+import { DebugElement } from '@angular/core';
 
 import { UsuariosServiceMock } from './../mocks/usuarios.service.mock'
 
@@ -17,7 +16,6 @@ describe('ListaUsuariosComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ListaUsuariosComponent, UsuarioRowComponent ],
       providers: [
-        MockBackend,
         { provide: UsuariosService, useClass: UsuariosServiceMock }
       ]
     })
