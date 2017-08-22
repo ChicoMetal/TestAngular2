@@ -8,8 +8,7 @@ import { UsuarioComponent } from '../usuario/usuario.component';
 export class UsuariosServiceMock{
     
     //creo los metodos y devuelvo mocks de lo que retornaria normalmente
-    getUsuario():Observable<UsuarioComponent[]>{
-
+    public getUsuarios():Observable<UsuarioComponent[]>{
         return Observable.of(//de esta forma puedo retornar un observable sin una respuesta de http
             [ new UsuarioComponent( 'Andres', 'andres@g.com', 35264598 ),
             new UsuarioComponent( 'Usuario1', 'usuario1@g.com', 85454515 ),

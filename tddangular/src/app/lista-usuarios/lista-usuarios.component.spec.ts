@@ -1,10 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser'
 import { DebugElement } from '@angular/core'
-import { Http } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 
 import { UsuariosServiceMock } from './../mocks/usuarios.service.mock'
-import { mockHttpProvider } from './../mocks/http.service.mock'
 
 import { ListaUsuariosComponent } from './lista-usuarios.component';
 import { UsuarioRowComponent } from '.././usuario-row/usuario-row.component';
@@ -18,9 +17,9 @@ describe('ListaUsuariosComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ ListaUsuariosComponent, UsuarioRowComponent ],
       providers: [
+        MockBackend,
         { provide: UsuariosService, useClass: UsuariosServiceMock }
       ]
-
     })
     .compileComponents();
   }));
@@ -31,6 +30,7 @@ describe('ListaUsuariosComponent', () => {
     fixture.detectChanges();
   });
 
+  
   it('should be created', () => {
     expect(component).toBeTruthy();
   });
@@ -40,16 +40,13 @@ describe('ListaUsuariosComponent', () => {
     it('Deberia estar el compononente usuario-row', () => {//probar si un componente se esta agregando
 
       let de = fixture.debugElement.query( By.css('app-usuario-row') );
-
       expect( de ).toBeTruthy();
     });
 
     it('Funcional: Validar la propiedad output desde el padre del componente', () => {
 
-      let deButton = fixture.debugElement.query( By.css('app-usuario-row .btn-seleccionar') );
-      
+      let deButton = fixture.debugElement.query( By.css('app-usuario-row .btn-seleccionar') );      
       deButton.triggerEventHandler('click', null );//P1 = grupo de eventos, P2 = evento especifico
-  
       fixture.detectChanges();
 
       expect( component.UsuarioSeleccionado.name ).toEqual('Andres');
