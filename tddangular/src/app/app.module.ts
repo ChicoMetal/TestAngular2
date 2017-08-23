@@ -9,6 +9,7 @@ import { PersonaRowComponent } from './persona-row/persona-row.component';
 import { UsuarioRowComponent } from './usuario-row/usuario-row.component';
 import { UsuarioComponent } from './usuario/usuario.component';
 import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.component';
+import { ReversePipe } from './pipes/reverse.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ListaUsuariosComponent } from './lista-usuarios/lista-usuarios.componen
     PersonaRowComponent,
     UsuarioRowComponent,
     UsuarioComponent,
-    ListaUsuariosComponent
+    ListaUsuariosComponent,
+    ReversePipe
   ],
   imports: [
     BrowserModule,

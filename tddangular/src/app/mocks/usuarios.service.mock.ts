@@ -6,6 +6,7 @@ import { UsuarioComponent } from '../usuario/usuario.component';
 //crear clase mock para evitar hacer pruebas de subcomponentes usados en 
 //el componente que se esta probando
 export class UsuariosServiceMock{
+    //se le deja .mock para que no sea evaluado por el coverage
     
     //creo los metodos y devuelvo mocks de lo que retornaria normalmente
     public getUsuarios():Observable<UsuarioComponent[]>{
