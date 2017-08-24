@@ -11,6 +11,7 @@ export class ListaUsuariosComponent implements OnInit {
   
   public UsuarioSeleccionado:UsuarioComponent;
   public Usuarios:UsuarioComponent[];
+  public usuarioUnico:UsuarioComponent;
 
   constructor(
    private usuarioService:UsuariosService
@@ -29,6 +30,12 @@ export class ListaUsuariosComponent implements OnInit {
     .subscribe(data =>{
       this.Usuarios = data;
     });
+  }
+
+  getUsuario( id:number ){
+
+    this.usuarioService.getUsuario( id )
+      .subscribe( data => { this.usuarioUnico = data } );
   }
 
   Seleccionar( Usuario:UsuarioComponent ){

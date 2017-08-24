@@ -8,6 +8,7 @@ import { ListaUsuariosComponent } from './lista-usuarios.component';
 import { UsuarioRowComponent } from '.././usuario-row/usuario-row.component';
 import { UsuariosService } from './../usuarios.service';
 
+//pruebas a un componente al que se le inyecta un servicio usando un mock del servicio inyectado
 describe('ListaUsuariosComponent', () => {
   let component: ListaUsuariosComponent;
   let fixture: ComponentFixture<ListaUsuariosComponent>;
