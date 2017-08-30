@@ -1,5 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser'
 
 import { FormularioSkuComponent } from './formulario-sku.component';
 
@@ -53,5 +55,37 @@ describe('FormularioSkuComponent', () => {
       expect( component.skuCampo.getError('required') ).toBeTruthy();
     });
 
+  });
+
+  describe('Pruebas funcionales FormularioSkuComponent', ()=> {
+
+    it('Probar mensajes de error: SKU invalido', ()=>{
+      let input = fixture.debugElement.query( By.css('input#skuInput') ).nativeElement;//obtener el elemento nativo
+      input.value = '23564';//asignar un texto al campo del formulario
+      input.dispatchEvent( new Event('input') );
+      fixture.detectChanges();
+      fixture.whenStable()
+        .then(()=>{//promesa cuando ya todos los cambios se realizen ( disparados por detectChanges)
+            let mensajes:any[] = fixture.nativeElement.querySelectorAll('.ui.message');//obtener array con los elementos existentes con el selector indicado
+            expect( mensajes.length ).toEqual(1);//verifico que debe mostrar alerta de un solo error
+            expect( mensajes[0].innerHTML ).toContain('SKU es invalido');
+        });
+
+    });
+
+    it('Probar mensajes de error: SKU no existe, es invalido', ()=>{
+      let input = fixture.debugElement.query( By.css('input#skuInput') ).nativeElement;//obtener el elemento nativo
+      input.value = '';//asignar un texto al campo del formulario
+      input.dispatchEvent( new Event('input') );
+      fixture.detectChanges();
+      fixture.whenStable()
+        .then(()=>{//promesa cuando ya todos los cambios se realizen ( disparados por detectChanges)
+            let mensajes:any[] = fixture.nativeElement.querySelectorAll('.ui.message');//obtener array con los elementos existentes con el selector indicado
+            expect( mensajes.length ).toEqual(2);//verifico que debe mostrar alerta de un solo error
+            expect( mensajes[0].innerHTML ).toContain('SKU es requerido');
+            expect( mensajes[1].innerHTML ).toContain('SKU es invalido');            
+        });
+
+    });
   });
 });

@@ -1,3 +1,36 @@
-<p>
-  formulario-sku works!
-</p>
+<div class="ui raised segment">
+  <h2 class="ui header">Prueba de Formulario: Sku {{ skuNombre.value }}</h2>
+  <form class="ui form"
+        [formGroup]="skuFormulario"
+        (ngSubmit)="onSubmit(skuFormulario.value)">
+    <div class="field" [class.error]="skuCampo.invalid && skuCampo.touched">
+      <label for="skuInput">SKU</label>
+      <input type="text"
+            id="skuInput"
+            placeholder="SKU"
+            name="sku" 
+            autocomplete="off"
+            [formControl]="skuCampo">
+      <div class="ui message" *ngIf="skuCampo.dirty && skuCampo.hasError('required')">
+        SKU es requerido
+      </div>
+      <div class="ui message" *ngIf="skuCampo.dirty && skuCampo.hasError('skuInvalido')">
+        SKU es invalido
+      </div>
+    </div>
+
+    <div class="field" [class.error]="skuNombre.invalid && skuNombre.dirty">
+      <label for="name">Nombre</label>
+      <input type="text"
+            id="name"
+            placeholder="name"
+            name="name"
+            [formControl]="skuNombre">
+      <div class="ui message" *ngIf="skuNombre.dirty && skuNombre.hasError('required')">
+        nombre es requerido
+      </div>
+    </div>
+    
+    <button type="submit" class="ui button">Enviar</button>
+  </form>
+</div>
